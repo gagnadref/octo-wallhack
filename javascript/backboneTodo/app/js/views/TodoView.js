@@ -28,7 +28,7 @@ return Backbone.View.extend({
 		var currentText = $target.text();
 		$target.remove();
 		var $input = createTitleInput(currentText);
-		this.$el.prepend($input);
+		this.$el.append($input);
 		focusAndSelectAll($input);
    },
    saveTodo: function saveTodo(event){
@@ -42,6 +42,7 @@ return Backbone.View.extend({
 		if(event.keyCode !== ENTER_KEYCODE) {
 			return;
 		}
+		// if key pressed === Enter => saveTodo
 		this.saveTodo(event);
    },
    render: function renderTodoView(){
