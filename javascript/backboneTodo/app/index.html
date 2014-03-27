@@ -12,7 +12,14 @@
   
   <script type="text/html" id="todoView">
 	<input type="checkbox" <% if(completed) { %> checked="true" <% } %> />
-    <span data-selection><%= title %></span> 
+    <% if(isEditing) { %>
+	<input type="text" data-selection value="<%= title %>">
+	</input> 
+	<% } else { %>
+	<span data-selection>
+		<%= title %>
+	</span> 
+	<% } %>
   </script>
   
   <script data-main="js\application.js" src="..\node_modules\requirejs\require.js"></script>
