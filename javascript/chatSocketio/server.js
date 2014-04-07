@@ -29,7 +29,7 @@ io.sockets.on('connection', function(socket) {
 	console.log("new connection");
 	socket.emit('connectionSuccess');
 	socket.on('nickname', function(nickname) {
-	    socket.set('nickname', nickname);
+	    	socket.set('nickname', nickname);
 		console.log('new nickname:' + nickname);
 		io.sockets.emit('newChatter', nickname);
 	});
