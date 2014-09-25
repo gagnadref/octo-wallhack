@@ -19,6 +19,9 @@ void SnowFlake::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 }
 
 void SnowFlake::move(sf::Vector2f deltaPos) {
+    for(int i = 0; i < vertexArray->getVertexCount(); i++) {
+        (*vertexArray)[i].position = (*vertexArray)[i].position + deltaPos; 
+    }
 }
 
 void SnowFlake::expandFlake() {
