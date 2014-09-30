@@ -25,7 +25,6 @@ Polynom Polynom::operator+=(const Polynom& p) {
     this->coeffs.resize(p.coeffs.size());
   }
   for(int i = 0; i < this->coeffs.size(); i++) {
-    std::cout << this->coeffs[i] << " " << p.coeffs[i] << std::endl;
     this->coeffs[i] = this->coeffs[i] + p.coeffs[i];
   }
   return *this;
