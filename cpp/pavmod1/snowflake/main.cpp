@@ -14,8 +14,9 @@ int main()
     int currentX = 100;
     int currentDir = +1;
     // on fait tourner le programme tant que la fenêtre n'a pas été fermée
-    SnowFlake shape(2, sf::Vector2f(100,100)); 
-
+    int i = 1;
+    SnowFlake* shape = new SnowFlake(i, sf::Vector2f(100,100)); 
+    
     while (window.isOpen())
     {
         // on traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
@@ -32,10 +33,9 @@ int main()
         window.clear(sf::Color::Black);
 
         // c'est ici qu'on dessine tout
-        shape.move(sf::Vector2f(currentDir, 0));
-        window.draw(shape);
-        window.draw(shape2);
-        sf::sleep(sf::milliseconds(3));
+        shape = new SnowFlake(i, sf::Vector2f(100,100)); 
+        window.draw(*shape);
+        sf::sleep(sf::milliseconds(2000));
         currentX += currentDir;
         if (currentX >= 600)
         {
@@ -47,6 +47,10 @@ int main()
         }
         // fin de la frame courante, affichage de tout ce qu'on a dessiné
         window.display();
+        i++;
+        if(i > 10) {
+            break;
+        }
     }
 
     return 0;
