@@ -30,6 +30,17 @@ Polynom Polynom::operator+=(const Polynom& p) {
   return *this;
 }
 
+Polynom Polynom::operator*=(const double factor) {
+  for (auto it = this->coeffs.begin(); it != this->coeffs.end(); it++) {
+    *it = *it * factor;
+  } 
+  return *this;
+}
+
+Polynom Polynom::operator-=(const Polynom& p) {
+  return *this += (-1) * p;
+}
+
 std::string Polynom::ToString() const {
   std::ostringstream res;
   for(int i = 0; i < this->coeffs.size(); i++) {
@@ -42,4 +53,19 @@ std::string Polynom::ToString() const {
     }
   }
   return res.str();
+}
+
+Polynom operator+(const Polynom& a, const Polynom& b) {
+  Polynom temp(a);
+  return temp += b;
+}
+
+Polynom operator*(const double factor, const Polynom& p) {
+  Polynom temp(p);
+  return temp *= factor;
+}
+
+Polynom operator-(const Polynom& a, const Polynom& b) {
+  Polynom temp(a);
+  return temp -= b;
 }
